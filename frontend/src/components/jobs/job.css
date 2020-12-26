@@ -1,0 +1,252 @@
+#bg-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    
+    
+}
+
+.wrapper{
+    position: absolute;
+    float: left;
+    left: 10%;
+    display: inline;
+    margin-bottom: 10%;
+}
+
+.wrapper h4{
+    /* text-transform: uppercase; */
+    font-style: bold;
+    color: black;
+    padding: 10px 0;
+    margin: 0 0 0 10px;
+ }
+
+ 
+.wrapper #input{
+      position: relative;
+      width:400px;
+      height: 120px;
+      font-size:1em;
+      padding:1.2em 1.7em 1.2em 1.7em;
+      margin:0 1em 0.4em 0.6em;
+      border-radius: 5px;
+      border:none;
+      background:#ebebeb;
+      outline:none;
+      font-weight: bold;
+      transition:0.4s;
+  }
+
+.wrapper input{
+    position: relative;
+    font-size:1em;
+    padding:1.2em 1.7em 1.2em 1.7em;
+    margin:0 1em 0.4em 0.6em;
+    background: #ebebeb; 
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    font-weight: bold;
+    transition:0.4s;
+}
+
+.wrapper #btn{
+    position: relative;
+    width:150px;
+    height: 45px;
+    background:#995c56;
+    color:#ffff;
+    padding:2px;
+    margin: 0 1em 1em 0.6em;
+    border:none;
+    transition: 0.2s;
+    font-size:1.1em;
+    font-weight: bold;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+.Image{
+    position: absolute;
+    left:60%;
+    margin-bottom: 1em;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow:0 3px 20px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+
+/* EDITOR CANVAS & BUTTONS */
+
+.Annotatewrapper{
+    position: absolute;
+
+    left: 10%;
+    align-content: center;
+    margin-bottom: 10%;
+}
+
+.Annotatewrapper h4{
+    /* text-transform: uppercase; */
+    font-style: bold;
+    color: black;
+    padding: 10px 0;
+    margin: 0 0 0 10px;
+ }
+
+ 
+.Annotatewrapper #input{
+      position: relative;
+      width:400px;
+      height: 120px;
+      font-size:1em;
+      padding:1.2em 1.7em 1.2em 1.7em;
+      margin:0 1em 0.4em 0.6em;
+      border-radius: 5px;
+      border:none;
+      background:#ebebeb;
+      outline:none;
+      font-weight: bold;
+      transition:0.4s;
+  }
+
+.Annotatewrapper input{
+    position: relative;
+    font-size:1em;
+    padding:1.2em 1.7em 1.2em 1.7em;
+    margin:0 1em 0.4em 0.6em;
+    background: #ebebeb; 
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    font-weight: bold;
+    transition:0.4s;
+}
+
+.Annotatewrapper #btn{
+    position: relative;
+    width:150px;
+    height: 45px;
+    background:#995c56;
+    color:#ffff;
+    padding:2px;
+    margin: 0 1em 1em 0.6em;
+    border:none;
+    transition: 0.2s;
+    font-size:1.1em;
+    font-weight: bold;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.info{
+    display: flex;
+    align-content: center;
+  
+}
+
+.select{
+    display: flex;
+    
+}
+
+.Buttons{
+    
+    display: inline;
+    left: 30%;
+    top:5%;
+    margin-bottom: 6em;
+    
+}
+
+.Button{
+    position: relative;
+    width:70px;
+    height:35px;
+    background:#995c56;
+    color:#ffff;
+    padding:2px;
+    margin: 0 2px 2px 0;
+    border:none;
+    transition: 0.2s;
+    font-size:0.7em;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+
+
+.Canvas{
+    position: absolute;
+    margin-bottom: 1em;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow:0 3px 20px 0px rgba(0, 0, 0, 0.1);
+
+}
+
+
+/* SOLUTION TABLE */
+
+  
+  
+  .table-wrapper{
+    margin: 10px 70px 70px  ;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+  }
+  
+  .fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;  
+    white-space: nowrap;
+    background-color: white;
+    justify-content: space-between;
+  }
+  
+  .fl-table td, .fl-table th {
+    text-align: justify;
+    padding: 8px;
+  }
+  
+  .fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+  }
+  
+  .fl-table thead th {
+    color: #ffffff;
+    background: #34d1a0;
+  }
+  
+  
+  .fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+  }
+  
+  .fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+  }
+  
+  #btn{
+    border-radius: 4px;
+    background: #34d1a0;
+    border: none;
+    color: #f8f8f8;
+    padding: 4px;
+  }
+
