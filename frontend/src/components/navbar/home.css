@@ -1,0 +1,35 @@
+html,body {
+    width:100%;
+    height: 100%;
+    margin: 0;
+}
+#background-video {
+    position: absolute;
+    width: 100%;
+    margin-top: 87px;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+}
+@media (min-aspect-ratio: 16/9) {
+    #background-video {
+        width:100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    #background-video { 
+        width:auto;
+        height: 100%;
+    }
+}
+@media (max-width: 767px) {
+    #background-video {
+        width:auto;
+        height: auto;
+    }
+   
+}

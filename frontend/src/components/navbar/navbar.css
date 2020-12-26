@@ -1,0 +1,46 @@
+
+.navbar-brand{
+    
+    color: beige;
+    
+} 
+
+h2{
+    text-align:start;
+    font-size: 25px;
+    font-style: bold;
+    letter-spacing: 1px;
+    color: #fbc304;
+    padding: 10px 0;
+  }
+
+.navbar {
+    color: beige;
+    background-color:#995c56;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top:0;
+    overflow: auto;
+    height: max-content;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-nav{
+    float: right;
+}
+
+.nav-item{
+    /* position: relative; */
+    color: beige;
+    background-color:#995c56;
+    width: 70px;
+    height: 58px;
+    border: 2px white;
+
+}
+
+.logo{
+    float:left;
+    margin-right: 10px;
+}
