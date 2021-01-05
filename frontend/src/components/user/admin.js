@@ -161,39 +161,9 @@ class Admin extends Component{
 
                 </div>
 
-                
+                <button onClick={()=>this.props.history.push('/alluser',{users:this.state.users})}>Get User list</button>
 
-                <div className="Users Details">
-                    <h2>Registered Users Details </h2>
-                <div className="table-wrapper">
-                    <table className="fl-table">
-                        <thead>
-                            <th>User id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Mob Number</th>
-                            <th>Education</th>
-                            <th>Gender</th>
-                            <th>DOB</th>
-                            <th>Type of User</th>
-                            <th>Get Details</th>
-                        </thead>
-                        {this.state.users.map(x=>
-                        <tr>
-                            <td>{x._id}</td>
-                            <td>{x.name}</td>
-                            <td>{x.email}</td>
-                            <td>{x.number}</td>
-                            <td>{x.education}</td>
-                            <td>{x.gender}</td>
-                            <td>{x.dob}</td>
-                            <td>{x.usertype}</td>
-                            <td><button id="btn" onClick={()=>{this.givedetails(x)}}>Submission details</button></td>
-                            
-                        </tr>)}
-                    </table>
-                </div>
-                </div>
+                
             </div>   
             
         )
