@@ -9,6 +9,7 @@ import Register from './components/auth/register'
 import Clientpage from './components/user/clientpage';
 import Providerpage from './components/user/providerpage';
 import Admin from './components/user/admin';
+import Users from './components/user/users';
 import Job1page from './components/jobs/job1/job1show'
 import Job1addpage from './components/jobs/job1/job1add'
 import Job1soln from './components/jobs/job1/job1soln'
@@ -51,6 +52,7 @@ class App extends Component {
           <ProtectedRoute exact  path='/clientpage' component={Clientpage} />
           <ProtectedRoute exact  path='/providerpage' component={Providerpage} />
           <ProtectedRoute exact  path='/admin' component={Admin} />
+          <ProtectedRoute exact  path='/alluser' component={Users}/>
           <ProtectedRoute exact  path='/job1page' component={Job1page}/>
           <ProtectedRoute exact  path='/job1add' component={Job1addpage}/>
           <ProtectedRoute exact  path='/job1soln' component={Job1soln}/>
