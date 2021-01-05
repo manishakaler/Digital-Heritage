@@ -11,7 +11,8 @@ class Clientpage extends Component{
             oldjobs:[],
             jobs:[]
             }
-            this.jobs=[]
+            this.jobs=[];
+            this.head='NEW JOBS'
     }
 
     handleRoute(x)
@@ -70,17 +71,21 @@ class Clientpage extends Component{
                     
                 </div>
                 <button onClick={()=>{
+                    this.head='NEW JOBS'
                     this.jobs=this.state.newjobs
                     this.setState({jobs:this.state.newjobs})
                     
                     }}>New jobs</button>
-               <button onClick={()=>{
+
+                <button onClick={()=>{
+                   this.head='COMPLETED JOBS'
                     this.jobs=this.state.oldjobs
                     this.setState({jobs:this.state.oldjobs})
                     
                     }}>Completed jobs</button>
+                    
                 <div className='table-wrapper'>
-                    <h2>NEW JOBS</h2>
+                    <h2>{this.head}</h2>
                     <table className="fl-table">
                     <thead>
                         <tr>
