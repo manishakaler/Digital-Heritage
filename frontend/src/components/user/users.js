@@ -17,8 +17,8 @@ class Users extends Component{
         {
             axios.post('http://localhost:3001/getclientdetails',{'id':x._id})
             .then(response=>{
-            
-                alert('Descryption jobs Completed='+response.data.job1+'\nAdd Image Job Completed='+response.data.job2+'\nAnnotation Job Completed='+response.data.job3)
+                this.props.history.push('/userdetails',{job1:response.data.job1,job2:response.data.job2,job3:response.data.job3,mssg:'Details of Jobs Submitted by User'})
+                
             })
         }
         if(x.usertype=="Provider")
@@ -26,7 +26,7 @@ class Users extends Component{
             axios.post('http://localhost:3001/getproviderdetails',{'id':x._id})
             .then(response=>{
             
-                alert('Descryption jobs='+response.data.job1+'\nAdd Image Job='+response.data.job2+'\nAnnotation Job='+response.data.job3)
+                this.props.history.push('/userdetails',{job1:response.data.job1,job2:response.data.job2,job3:response.data.job3,mssg:'Details of Jobs Posted by User'})
             })
         }
     }

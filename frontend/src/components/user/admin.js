@@ -41,25 +41,7 @@ class Admin extends Component{
             this.jobs.job3=response.data.job3
         })
     }
-    givedetails(x)
-    {
-        if(x.usertype=="Client")
-        {
-            axios.post('http://localhost:3001/getclientdetails',{'id':x._id})
-            .then(response=>{
-            
-                alert('Descryption jobs Completed='+response.data.job1+'\nAdd Image Job Completed='+response.data.job2+'\nAnnotation Job Completed='+response.data.job3)
-            })
-        }
-        if(x.usertype=="Provider")
-        {
-            axios.post('http://localhost:3001/getproviderdetails',{'id':x._id})
-            .then(response=>{
-            
-                alert('Descryption jobs='+response.data.job1+'\nAdd Image Job='+response.data.job2+'\nAnnotation Job='+response.data.job3)
-            })
-        }
-    }
+    
     handlesubmit(){
         axios.post('http://localhost:3001/savejobtype',this.jobtype)
         .then((response)=>{
@@ -145,7 +127,7 @@ class Admin extends Component{
                     </tr>
                     
                     <tr>
-                        <td>Database Creation Jobs</td>
+                        <td>Annotation Jobs</td>
                         <td>{this.jobs.job2}</td>
                     </tr>
 
