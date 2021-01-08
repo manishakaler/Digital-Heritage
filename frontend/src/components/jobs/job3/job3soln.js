@@ -15,9 +15,20 @@ class Job2soln extends Component{
         axios.get('http://localhost:3001/userdetails/'+id)
         .then(response=>{
             
-            alert('Name='+response.data.name +'\nEmail='+response.data.email +'\nMobile Number='+response.data.number)
+            this.props.history.push('/usercontact',{name:response.data.name,email:response.data.email,mob:response.data.number})
         })
 
+
+    }
+
+    download(){
+        const fileData = JSON.stringify(this.state.job_soln);
+        const blob = new Blob([fileData], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = 'annotation.txt';
+        link.href = url;
+        link.click();
 
     }
 
@@ -29,18 +40,20 @@ class Job2soln extends Component{
 
                 <table className="fl-table">
                     <thead>
-                        <th>SOLUTION</th>
-                        <th>Meta-Data</th>
+                        <th>Shape</th>
+                        <th>Cordinates</th>
                         <th>User Details</th>
                     </thead>
                     
                     {this.state.job_soln.map(x=>
-                    <tr> <td>Images: <ul>{x.image.map(img=><li><a target='_blank' href={'http://localhost:3001/getimage/'+img} >{img}</a></li>)}</ul> </td>
-                    <td>  {x.answer}</td>
+                    <tr> 
+                    <td>{x.annotation.shape}</td>
                     <td>< button id="btn" onClick={()=>{this.promptdetails(x.user_id)}} >Client Details</button></td>
+                    <td> <tr>X Cordinate = {x.annotation.x_cor.toString()} </tr><tr>Y Cordinate = {x.annotation.y_cor.toString()} </tr></td>
+                   
                     </tr>)}
                 </table>
-
+                <button id="btn" onClick={()=>this.download()}>Download data</button>
                 </div>
                 
             )

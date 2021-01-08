@@ -34,7 +34,7 @@ function startdraw(event)
   pic_square=ctx.getImageData(0,0,canvas.width,canvas.height)
   brush=true;
   brushpos_start=get_cordinates(event)
-  console.log(brushpos_start)
+  
   sqr_start=brushpos_start
   image_data= canvas.toDataURL()
   imagedata_list.push(image_data)
@@ -44,14 +44,14 @@ function finishdraw(event)
 { 
   brush=false;
   brushpos_end=get_cordinates(event)
-  console.log(brushpos_end)
+ 
   ctx.beginPath();
   //ctx.clearRect(0,0,600,600) 
 }
 
 function freehand_draw()
 {  if(brush)
-  { console.log("Cord=",brushpos_move)
+  {
     ctx.drawWidth=5;
     ctx.lineCap="round"
     freehand_x.push(chng_x(brushpos_move.x))
@@ -103,23 +103,17 @@ async function get_url(){
   const a=await fetch(api_str)
    
   const j=await a.json()
-  console.log("json=",j)
+ 
   tem_img=j.image_id
   const image_url=j.image_source
   url= await'http://localhost:8000'+ image_url
-  console.log("async_url=",url)
+ 
 
   
 }
 
 
-function getImage(){
-    loadedimg_id=tem_img
-    get_url()
-    
-    return url
-  
-}
+
 
 function chng_x(x)
 {
@@ -144,7 +138,13 @@ class Job3page extends Component{
             answer:'',
             img:[]
             }
-         
+        this.annotate={
+          job_id:props.location.state.id,
+          user_id:window.localStorage.getItem('user_id'),
+          shape:'',
+          x_cor:[],
+          y_cor:[]
+        } 
         
 
         this.tool={
@@ -157,12 +157,12 @@ class Job3page extends Component{
     }
 
     set_tool(tool_id){
-        //console.log(this.tool)
+        
         this.tool.point=false
         this.tool.square=false
         this.tool.freehand=false
         this.tool[tool_id]=true
-        console.log(this.tool)
+       
     
     
       }
@@ -210,7 +210,7 @@ class Job3page extends Component{
       canvas.height-=100
       ctx.clearRect(0, 0,canvas.width,canvas.height)
       ctx.drawImage(t,0, 0,canvas.width,canvas.height)
-      console.log(this.state.job_img)
+     
     }
     // ctx.putImageData(img_data, 0, 0)
     // ctx.save()
@@ -222,17 +222,23 @@ class Job3page extends Component{
 
     handlesubmit(){
       
+      if(this.tool.square)
+      {
+        this.annotate.x_cor =[chng_x(sqr_start.x),chng_x(sqr_end.x)]
+        this.annotate.y_cor =[chng_y(sqr_start.y),chng_y(sqr_end.y)]
+        this.annotate.shape="Square"
+      }
+      else
+      {
+        this.annotate.x_cor=freehand_x
+        this.annotate.y_cor=freehand_y
+        freehand_y=[]
+        freehand_x=[]
+        this.annotate.shape="Freehand"
+      }
+      console.log(this.annotate) 
+      axios.post('http://localhost:3001/savesoln3',this.annotate)
         
-        
-        const data= new FormData()
-        data.append('job_id',this.state.job_id)
-        data.append('user_id',this.state.user_id)
-        data.append('answer',this.state.answer)
-        for(var i=0;i<this.state.img.length;i++)
-        data.append('images',this.state.img[i])
-        
-        axios.post('http://localhost:3001/savesoln2',data)
-        .then(()=>{this.props.history.push('/clientpage')})
 
 
         
@@ -276,7 +282,7 @@ class Job3page extends Component{
             
             ctx.clearRect(0, 0,canvas.width,canvas.height)
             ctx.drawImage(img,0, 0,canvas.width,canvas.height)
-            console.log(img)
+           
             image_data= canvas.toDataURL()
             imagedata_list.push(image_data)
         }
@@ -298,25 +304,19 @@ class Job3page extends Component{
                 <div className="Annotatewrapper">
                   <div className="info">
                   <h4>Title: {this.state.job_title}</h4>
+                  
                   <h4>Description:{this.state.job_descryption}</h4>
                   <br></br>
 
                   </div>
                 
                   <div className="select">
-                  <label>
-                  <h4>Select the annotated Images</h4>
-                    <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange = {(event)=>{this.handleEvent(event)}} multiple/>
-                  </label>
-                  <br></br>
-                  <label>
-                    <h4>Details:</h4>
-                    <textarea id="input" onChange={event=>{this.state.answer=event.target.value}}></textarea>
-                  </label>
-                  <label>
-                  <h4>Final Submission</h4>
-                  <button id="btn" onClick={event=>{this.handlesubmit()}}>Submit Job</button>
-                  </label>
+                  
+                  
+                  
+                  <button id="btn" onClick={event=>{this.handlesubmit()}}>Save Annotation</button>
+                  <button id="btn" onClick={()=>this.props.history.push('/clientpage')}>Exit</button>
+                  
                   </div>
                   <div className="Buttons" position="fixed" bottom="0" right="0">
                   <button class="Button" onClick={()=>{this.set_tool('freehand')}}>Free Hand</button>
