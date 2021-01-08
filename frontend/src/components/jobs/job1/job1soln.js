@@ -16,7 +16,8 @@ class Job1soln extends Component{
         axios.get('http://localhost:3001/userdetails/'+id)
         .then(response=>{
             
-            alert('Name='+response.data.name+'\nEmail='+response.data.email+'\nMobile Number='+response.data.number)
+            this.props.history.push('/usercontact',{name:response.data.name,email:response.data.email,mob:response.data.number})
+            
         })
 
 
