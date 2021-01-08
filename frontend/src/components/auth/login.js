@@ -64,8 +64,8 @@ class Login extends Component {
       <form onSubmit={this.handleSubmit}>
        
         <label>
-          Username:
-          <input type="text" placeholder='Username' onChange= {(event) =>{this.state.username=event.target.value}} />
+          Email Id:
+          <input type="text" placeholder='Email address' onChange= {(event) =>{this.state.username=event.target.value}} />
         </label>
         <label>
           Password:
