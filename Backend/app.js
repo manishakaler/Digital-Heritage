@@ -44,7 +44,7 @@ con.on('open',()=>{
 
 
 app.get('/getimage/:img', (req, res) => {
-  res.sendFile('C:/Users/hp/Desktop/BTP20/Backend/uploads/'+req.params.img)
+  res.sendFile('F:/BTP- 4th Year/Job-Client-Digital-Hetritage-master/Backend/uploads/'+req.params.img)
   
 })
 
