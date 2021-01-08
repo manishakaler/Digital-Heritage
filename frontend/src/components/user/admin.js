@@ -143,7 +143,7 @@ class Admin extends Component{
 
                 </div>
 
-                <button onClick={()=>this.props.history.push('/alluser',{users:this.state.users})}>Get User list</button>
+                <button id="getdetails" onClick={()=>this.props.history.push('/alluser',{users:this.state.users})}>Get User list</button>
 
                 
             </div>   

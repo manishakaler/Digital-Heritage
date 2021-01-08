@@ -182,10 +182,10 @@ h2{
   height: 70px;
   font-size: 18px;
   font-style: bold;
-  color: white;
+  color:rgb(163, 22, 22);
   padding: 20px 5px 10px 5px;
   margin: 0 0 0 10px;
-  background-color:#fbc304;
+  /* background-color:#fbc304; */
   border-radius: 5%;
 }
 
@@ -251,7 +251,23 @@ h2{
   
 }
 
+/* BUTTON */
 
+#getdetails {
+  position: absolute;
+    left: 45%;
+    width:150px;
+    height: 50px;
+    background:#995c56;
+    color:#ffff;
+    padding:2px;
+    border:none;
+    transition: 0.2s;
+    font-size:1.1em;
+    font-weight: bold;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
 
 
 
