@@ -17,7 +17,7 @@ const JobSchema=new mongoose.Schema({
     img:{
       type:String
     },
-    soln: [{user_id:String,answer:String,image:[]}]
+    soln: [{user_id:String,answer:String,image:[],annotation:{shape:String,x_cor:[],y_cor:[]}}]
     
   })
   

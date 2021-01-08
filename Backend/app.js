@@ -8,9 +8,9 @@ const path=require('path')
 const url= 'mongodb://localhost/btp20'
 const userSchema=require('./user')
 const jobSchema=require('./jobs');
+const job_typeSchema=require('./job_type')
 const { ObjectId } = require('mongodb');
-// const url ="mongodb+srv://manish:manish@cluster0.hdevf.mongodb.net/btp20?retryWrites=true&w=majority"
-
+ 
 app.use(
   cors({
     origin: 'http://localhost:3000',
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 const upload=multer({storage:storage})
 
 
-mongoose.connect(url,{useNewUrlParser:true})
+mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology: true})
 .then(()=>{console.log("Internet database connected")})
 const con =mongoose.connection
 
@@ -44,7 +44,7 @@ con.on('open',()=>{
 
 
 app.get('/getimage/:img', (req, res) => {
-  res.sendFile('F:/BTP- 4th Year/Job-Client-Digital-Hetritage-master/Backend/uploads/'+req.params.img)
+  res.sendFile('C:/Users/hp/Desktop/BTP20/Backend/uploads/'+req.params.img)
   
 })
 
@@ -94,6 +94,41 @@ app.post('/savejob2',async (req,res)=>
 
 
 })
+
+app.post('/savejobtype',async (req,res)=>{
+
+  const job_type=new job_typeSchema({
+    title:req.body.title,
+    route:req.body.route
+  })
+  try{
+
+    const r= await job_type.save()
+    const jobtype=await job_typeSchema.find()
+    res.send(jobtype)
+    
+    res.end('end')
+    
+  }
+  catch{
+  res.send(req.body)
+  res.end('End')
+  }
+})
+
+app.get('/getjobtype',async (req,res)=>{
+   var job_type=await job_typeSchema.find()
+   res.send(job_type)
+})
+
+app.post('/deletejobtype',async (req,res)=>{
+  
+  await job_typeSchema.remove({'_id':ObjectId(req.body.id)})
+  const jobtype=await job_typeSchema.find()
+  res.send(jobtype)
+  res.end()
+})
+
 
 
 app.get('/getjobs/:user_id',async (req,res)=>{
@@ -157,6 +192,121 @@ app.post('/savesoln2',upload.array('images'),async (req,res)=>{
    res.end()
 })
 
+app.post('/savesoln3',async (req,res)=>{
+  
+  // await job.soln.push(req.body)
+  // await job.save()
+  //console.log(req.body)
+  await jobSchema.updateOne({'_id':req.body.job_id},{$push:{soln:{user_id:req.body.user_id,annotation:{shape:req.body.shape,x_cor:req.body.x_cor,y_cor:req.body.y_cor}}}})
+  res.send("Updated")
+  res.end()
+})
+app.get('/getjobdetails',async (req,res)=>{
+
+  
+  var jobs=await jobSchema.find();
+  var tot=jobs.length;
+  var job1=0;
+  var job2=0;
+  var job3=0;
+  
+  for(var i=0;i<tot;i++)
+  {
+    if(jobs[i].jobtype=='Description')
+    job1++;
+    if(jobs[i].jobtype=='Add Images')
+    job2++;
+    if(jobs[i].jobtype=='Add Annotation')
+    job3++;
+
+  }
+  res.send({'job1':job1,'job2':job2,'job3':job3})
+  
+  
+
+   
+})
+
+app.post('/getproviderdetails',async (req,res)=>{
+
+  
+  var jobs=await jobSchema.find({'user_id':req.body.id});
+  var tot=jobs.length;
+  var job1=0;
+  var job2=0;
+  var job3=0;
+  
+  for(var i=0;i<tot;i++)
+  {
+    if(jobs[i].jobtype=='Description')
+    job1++;
+    if(jobs[i].jobtype=='Add Images')
+    job2++;
+    if(jobs[i].jobtype=='Add Annotation')
+    job3++;
+
+  }
+  res.send({'job1':job1,'job2':job2,'job3':job3})
+  
+  
+
+   
+})
+
+app.post('/getclientdetails',async (req,res)=>{
+
+  
+  var jobs= await jobSchema.find()
+  var newjobs=[];
+  var donejobs=[]
+  for(var i=0;i<jobs.length;i++)
+  {
+    var f=0;
+    for(var j=0;j<jobs[i].soln.length;j++)
+    {
+      if(jobs[i].soln[j].user_id===req.body.id)
+      {
+        f=1;
+        break;
+      }
+    }
+    if(f==0)
+    {
+      newjobs.push(jobs[i])
+    }
+    else
+    {
+      donejobs.push(jobs[i])
+    }
+    
+  }
+  jobs=donejobs;
+  var tot=jobs.length
+  console.log(donejobs.length,newjobs.length)
+  console.log(tot)
+  var job1=0;
+  var job2=0;
+  var job3=0;
+  
+  for(var i=0;i<tot;i++)
+  {
+    if(jobs[i].jobtype=='Description')
+    job1++;
+    if(jobs[i].jobtype=='Add Images')
+    job2++;
+    if(jobs[i].jobtype=='Add Annotation')
+    job3++;
+
+  }
+  res.send({'job1':job1,'job2':job2,'job3':job3})
+  
+  
+
+   
+})
+
+
+
 app.post('/login', async (req,res) =>{
 
   const user= await userSchema.find({"email":req.body.username})
@@ -172,8 +322,11 @@ app.post('/login', async (req,res) =>{
     else
       if(user[0].pass==req.body.password && user[0].usertype==="Client")
       res.send({status:"201",id:user[0]._id,name:user[0].name})
-    else
-    res.send({status:"400"})
+      else
+        if(user[0].pass==req.body.password && user[0].usertype==="Admin")
+        res.send({status:"202",id:user[0]._id,name:user[0].name})
+        else
+        res.send({status:"400"})
   }
   
 
@@ -225,6 +378,16 @@ app.get('/userdetails/:id',async (req,res)=>{
 
 
 })
+
+app.get('/alluserdetails',async (req,res)=>{
+
+  const users= await userSchema.find()
+  res.send(users)
+  res.end()
+
+
+})
+app.get
 
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
