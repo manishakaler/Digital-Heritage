@@ -63,6 +63,24 @@ class Clientpage extends Component{
         return(
             <div className="Jobs">
                 <img src="/entrance.jpeg" id="bg-img"/>
+                
+                
+                <div className='table-wrapper'>
+                <div className="toggle">
+                <button autoFocus id="new"  onClick={()=>{
+                    this.head='NEW JOBS'
+                    this.jobs=this.state.newjobs
+                    this.setState({jobs:this.state.newjobs})
+                    
+                    }}>New jobs</button>
+
+                <button id="comp" onClick={()=>{
+                   this.head='COMPLETED JOBS'
+                    this.jobs=this.state.oldjobs
+                    this.setState({jobs:this.state.oldjobs})
+                    
+                    }}>Completed jobs</button>
+                
                 <div className='Search'>
                     <label>
                         Search
@@ -70,22 +88,8 @@ class Clientpage extends Component{
                     </label>
                     
                 </div>
-                <button onClick={()=>{
-                    this.head='NEW JOBS'
-                    this.jobs=this.state.newjobs
-                    this.setState({jobs:this.state.newjobs})
-                    
-                    }}>New jobs</button>
-
-                <button onClick={()=>{
-                   this.head='COMPLETED JOBS'
-                    this.jobs=this.state.oldjobs
-                    this.setState({jobs:this.state.oldjobs})
-                    
-                    }}>Completed jobs</button>
-                    
-                <div className='table-wrapper'>
                     <h2>{this.head}</h2>
+                    
                     <table className="fl-table">
                     <thead>
                         <tr>
@@ -99,6 +103,9 @@ class Clientpage extends Component{
                     </table>
                 </div>
                
+            </div>
+
+
             </div>
         )
         else
