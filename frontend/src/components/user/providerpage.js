@@ -80,27 +80,26 @@ class Providerpage extends Component{
     render(){
         var h1="No Job Found"
         if(this.state.jobs.length>0)
-            h1="Following are the Jobs posted"
+            h1="Jobs posted"
         return(
             <div className='Jobs'>
                  <img src="/entrance.jpeg" id="bg-img"/> 
                  
-                 <div className="Addjobtype">
-                 <h2>Add New Job</h2>
+                
+                <div className='table-heading'>
+                <h2>{h1}</h2>
+                </div>
+                <div className="Addjobtype">
                 <select onChange={(event)=>{this.props.history.push(event.target.value)}} defaultValue="/job1add" id = "dropdown">
-                    <option>Select Job</option>
+                    <option>Add New Job</option>
                     {this.state.job_types.map(x=>
                         <option value={x.route}>{x.title}</option>
                         )}
                 </select>
                  </div>
-                 
-
-                <h2>{h1}</h2>
                 <div className='Search'>
                     <label>
-                        Search
-                        <input onChange={(event)=>this.handleChange(event)}/>
+                        <input placeholder="Search" onChange={(event)=>this.handleChange(event)}/>
                     </label>
                     
                 </div>
@@ -124,7 +123,7 @@ class Providerpage extends Component{
                         </tr>)}
                     
                 </table>
-            </div>
+                </div>
         </div>
         )
        

@@ -51,15 +51,17 @@ class Users extends Component{
     render(){
         return(
             <div className="Users">
+                
+                <div className="Users Details">
+                <div className='table-heading'>
+                <h2>Registered Users Details </h2>
+                </div>
                 <div className='Search'>
                     <label>
-                        Search
-                        <input onChange={(event)=>this.handleChange(event)}/>
+                        <input placeholder="Search" onChange={(event)=>this.handleChange(event)}/>
                     </label>
                     
                 </div>
-                <div className="Users Details">
-                        <h2>Registered Users Details </h2>
                     <div className="table-wrapper">
                         <table className="fl-table">
                             <thead>

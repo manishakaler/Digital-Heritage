@@ -81,14 +81,13 @@ class Clientpage extends Component{
                     
                     }}>Completed jobs</button>
                 
-                <div className='Search'>
+                <div className='Search-client'>
                     <label>
-                        Search
-                        <input onChange={(event)=>this.handleChange(event)}/>
+                    <input placeholder="Search" onChange={(event)=>this.handleChange(event)}/>
                     </label>
                     
                 </div>
-                    <h2>{this.head}</h2>
+                    
                     
                     <table className="fl-table">
                     <thead>

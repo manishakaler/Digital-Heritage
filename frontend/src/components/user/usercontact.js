@@ -16,10 +16,10 @@ class Usercontact extends Component{
     render(){
         return(
             <div className='details'>
-                <h3> User details are as follows</h3>
-                <h3> Name = {this.state.name}</h3>
-                <h3> Email = {this.state.email}</h3>
-                <h3> Number = {this.state.mob}</h3>
+                <h4> User details are as follows</h4>
+                <h4> Name = {this.state.name}</h4>
+                <h4> Email = {this.state.email}</h4>
+                <h4> Number = {this.state.mob}</h4>
             </div>
         )
     }

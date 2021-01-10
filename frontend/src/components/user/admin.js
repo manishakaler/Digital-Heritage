@@ -8,7 +8,9 @@ class Admin extends Component{
         super(props)
         this.state={
             job_types:[],
-            users:[]
+            users:[],
+            disp1:'',
+            disp2:"none"
         }
         this.jobtype={
             title:'',
@@ -20,6 +22,10 @@ class Admin extends Component{
             job3:Int32Array
 
         }
+        this.alljobs=[]
+        
+           
+        
     }
     componentDidMount(){
         axios.get('http://localhost:3001/getjobdetails')
@@ -40,6 +46,16 @@ class Admin extends Component{
             this.jobs.job2=response.data.job2;
             this.jobs.job3=response.data.job3
         })
+        axios.get('http://localhost:3001/getalljobs/' + window.localStorage.getItem('user_id'))
+        .then(
+            
+            response=>{
+                this.alljobs=response.data.new.concat(response.data.old)
+                
+                
+             
+        }
+        )
     }
     
     handlesubmit(){
@@ -63,8 +79,13 @@ class Admin extends Component{
             <div className="Admin">
             <img src="/entrance.jpeg" id="bg-img"/>
 
-            <div className="jobtype">
-                    <h2>Jobs added so far</h2>
+            <div className="toggle-admin">
+            <button autoFocus id="new" onClick={()=>{this.setState({disp1:'',disp2:'none'})}}> Job Type Details</button>
+            <button id="comp" onClick={()=>{this.setState({disp1:'none',disp2:''})}}> Statistics</button>
+            </div>
+
+            <div className="jobtype" style={{display:this.state.disp1}}>
+                   
                 <div className="table-wrapper">
                     <table className="fl-table">
                         <thead>
@@ -84,11 +105,39 @@ class Admin extends Component{
 
                 </div>
                 </div>
+
+                <div ClassName="jobtype" style={{display:this.state.disp2}}>
+                    <div className="table-wrapper">
+                    <table className="fl-table">
+                        <thead>
+                            <th>Users and Jobs </th>
+                            <th>Count</th>
+                            <th>Details</th>
+                        </thead>
+
+                    <tr>
+                        <td>Users</td>
+                        <td>{this.state.users.length}</td>
+                        <td><button id="btn" onClick={()=>this.props.history.push('/alluser',{users:this.state.users})}>Get User list</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jobs</td>
+                        <td>{this.jobs.job1+this.jobs.job2+this.jobs.job3}</td>
+                        <td><button id="btn" onClick={()=>this.props.history.push('/alljobs',{alljobs:this.alljobs})}>Get Job list</button></td>
+                    </tr>
+
+                    
+
+                    </table>
+
+                    </div>
+
+                </div>
                 
                 
 
 
-                <div className="Addjobtype">
+                <div className="Addjobtype" style={{display:this.state.disp1}}>
                     <h3>Add a New Job</h3>
                         <h4>Enter jobtype title</h4>
                         <input type="text"  placeholder={this.jobtype.title} onChange={(event)=>this.jobtype.title=event.target.value}/>
@@ -100,51 +149,6 @@ class Admin extends Component{
                     <button id="btn" onClick={()=>{this.handlesubmit()}}>Add Jobtype</button>
 
                 </div>
-
-
-
-                <div ClassName="Details">
-                    <h2>Statistics</h2>
-                    <div className="table-wrapper">
-                    <table className="fl-table">
-                        <thead>
-                            <th>Users and Jobs </th>
-                            <th>Count</th>
-                        </thead>
-
-                    <tr>
-                        <td>Users</td>
-                        <td>{this.state.users.length}</td>
-                    </tr>
-                    <tr>
-                        <td>Jobs</td>
-                        <td>{this.jobs.job1+this.jobs.job2+this.jobs.job3}</td>
-                    </tr>
-
-                    <tr>
-                        <td>Description Jobs</td>
-                        <td>{this.jobs.job1}</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>Annotation Jobs</td>
-                        <td>{this.jobs.job2}</td>
-                    </tr>
-
-                    <tr>
-                        <td>Annotation Jobs</td>
-                        <td>{this.jobs.job3}</td>
-
-                    </tr>
-
-                    </table>
-
-                    </div>
-
-                </div>
-
-                <button id="getdetails" onClick={()=>this.props.history.push('/alluser',{users:this.state.users})}>Get User list</button>
-
                 
             </div>   
             

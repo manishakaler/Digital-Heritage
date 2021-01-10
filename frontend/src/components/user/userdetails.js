@@ -32,11 +32,11 @@ class Userdetails extends Component{
         console.log(this.state)
         return(
             <div classjob1='details' >
-                <h1> {this.state.mssg}</h1>
+                <h2> {this.state.mssg}</h2>
                 <div>
-                    <h3> Description Job = {this.state.job1}</h3>
-                    <h3> Add Images Job = {this.state.job2}</h3>
-                    <h3> Add Annotation Job = {this.state.job3}</h3>
+                    <h4> Description Job = {this.state.job1}</h4>
+                    <h4> Add Images Job = {this.state.job2}</h4>
+                    <h4> Add Annotation Job = {this.state.job3}</h4>
                 </div>
                 
                 <Bar
@@ -68,4 +68,3 @@ class Userdetails extends Component{
 }
 
 export default Userdetails;
-
