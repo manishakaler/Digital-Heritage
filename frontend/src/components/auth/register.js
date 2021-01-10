@@ -73,7 +73,7 @@ class Register extends Component {
         </label>
 
         <label>
-          Date_of_Birth:
+          Date of Birth:
           <input type="date" placeholder="DOB" onChange={(event) =>{this.state.dob=event.target.value}} required />
         </label>
 
