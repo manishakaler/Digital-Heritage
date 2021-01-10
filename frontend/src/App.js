@@ -10,6 +10,7 @@ import Clientpage from './components/user/clientpage';
 import Providerpage from './components/user/providerpage';
 import Admin from './components/user/admin';
 import Users from './components/user/users';
+import Alljobs from './components/user/alljobs';
 import Usercontact from './components/user/usercontact';
 import Userdetails from './components/user/userdetails';
 import Job1page from './components/jobs/job1/job1show'
@@ -55,6 +56,7 @@ class App extends Component {
           <ProtectedRoute exact  path='/providerpage' component={Providerpage} />
           <ProtectedRoute exact  path='/admin' component={Admin} />
           <ProtectedRoute exact  path='/alluser' component={Users}/>
+          <ProtectedRoute exact  path='/alljobs' component={Alljobs}/>
           <ProtectedRoute exact  path='/usercontact' component={Usercontact}/>
           <ProtectedRoute exact  path='/userdetails' component={Userdetails}/>
           <ProtectedRoute exact  path='/job1page' component={Job1page}/>
