@@ -11,9 +11,11 @@ class Home extends Component {
     return (
 
       <div className="Home">
-      <h3 id="title">|| Digital Humanities ||</h3>
+      <div className="Quote">
+      {/* <h3 id="title">|| Digital Humanities ||</h3> */}
       <p id="intro">“...Technology alone is not enough — it's technology married with liberal arts, married with the humanities
-        , that yields us the results that make our heart sing.” ~ Steve Jobs</p>
+        , that yields us the results that make our heart sing.” <br></br>~ Steve Jobs</p>
+      </div>
        <video id="background-video" poster="../Images/poster.jpg" autoPlay loop muted>
           <source src={Vidoebg} type="video/mp4"/>
           Your browser does not support the video tag.
