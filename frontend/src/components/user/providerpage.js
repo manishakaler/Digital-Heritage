@@ -109,6 +109,7 @@ class Providerpage extends Component{
                         <tr>
                             <th>Title</th>
                             <th>Jobtype</th>
+                            <th>No of Solution</th>
                             <th>Solution</th>
                             <th>Open Job</th>
                             <th>Delete</th>
@@ -117,6 +118,7 @@ class Providerpage extends Component{
                     {this.state.jobs.map(x => <tr> 
                         <td>{x.title}</td>
                         <td> {x.jobtype}</td>
+                        <td>{x.soln.length}</td>
                         <td><button id="btn" onClick={()=>this.handleRoute(x)}>Solutions</button> </td>
                         <td><button id="btn" onClick={()=> this.handleRoutepages(x)}>Open Job</button></td>
                         <td> <button id="btn" color="warning" onClick={()=>{this.deletejob(x._id)}}>Delete</button></td>
