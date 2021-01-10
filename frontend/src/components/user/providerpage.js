@@ -86,10 +86,7 @@ class Providerpage extends Component{
                  <img src="/entrance.jpeg" id="bg-img"/> 
                  
                 
-                <div className='table-heading'>
-                <h2>{h1}</h2>
-                </div>
-                <div className="Addjobtype">
+                <div className="Addjobdropdown                ">
                 <select onChange={(event)=>{this.props.history.push(event.target.value)}} defaultValue="/job1add" id = "dropdown">
                     <option>Add New Job</option>
                     {this.state.job_types.map(x=>
@@ -97,6 +94,9 @@ class Providerpage extends Component{
                         )}
                 </select>
                  </div>
+                 <div className='table-heading'>
+                <h2>{h1}</h2>
+                </div>
                 <div className='Search'>
                     <label>
                         <input placeholder="Search" onChange={(event)=>this.handleChange(event)}/>

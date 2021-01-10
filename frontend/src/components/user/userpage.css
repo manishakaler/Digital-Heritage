@@ -55,6 +55,7 @@ body{
 
 h2{
   text-align: start;
+  margin-left: 10px;
   font-size: 20px;
   /* text-transform: uppercase; */
   font-style: bold;
@@ -178,7 +179,8 @@ h2{
 .table-heading{
   position: relative;
   float: left;
-  margin-left: 100px;
+  left: 40%;
+  /* margin-left: 500px; */
   margin-bottom: 7px;
   margin-top: 5px;
 }
@@ -191,16 +193,75 @@ h2{
   padding: 20px 5px 10px 5px;
 
 }
+
+/* SEARCH for ADMIN, CLIENT & PROVIDER */
+.Search{
+  position: absolute;
+  float: left;
+  margin-left: 90px;
+  margin-top:0.6em;
+  margin-bottom:0.6em;
+  color: #222;
+}
+
+
+.Search input{
+      position: relative;
+      background-color: #ebebeb;
+      font-size:1em;
+      padding:1em 1.2em 1em 1.2em;
+      margin-top:0.6em;
+      margin-bottom:0.6em;
+      border-radius: 5px;
+      border:none;
+      outline:none;
+      font-weight: bold;
+      transition:0.4s;
+  
+}
+
+.Search-client{
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 7px;
+  margin-top: 5px;
+  color: #222;
+}
+
+
+.Search-client input{
+      position: relative;
+      background-color: #ebebeb;
+      font-size:1em;
+      padding:1em 1.2em 1em 1.2em;
+      margin-top:0.6em;
+      margin-bottom:0.6em;
+      border-radius: 5px;
+      border:none;
+      outline:none;
+      font-weight: bold;
+      transition:0.4s;
+  
+}
+
 /* ADD_JOB_TYPE for ADMIN & JOB PROVIDER */
 
 .Addjobtype{
-  display: flex;
-  align-content: space-between;
+  
+    display: flex;
+    margin-left:70px ;
+    align-content: space-between;
+ 
+}
+
+.Addjobdropdown{
   position: relative;
   float: right;
   margin-right: 100px;
   margin-bottom: 7px;
   margin-top: 5px;
+
 }
 
 .Addjobtype input{
@@ -266,56 +327,6 @@ h2{
 
 }
 
-/* SEARCH for ADMIN, CLIENT & PROVIDER */
-.Search{
-  position: relative;
-  float: left;
-  margin-left: 500px;
-  margin-bottom: 7px;
-  margin-top: 5px;
-  color: #222;
-}
-
-
-.Search input{
-      position: relative;
-      background-color: #ebebeb;
-      font-size:1em;
-      padding:1em 1.2em 1em 1.2em;
-      margin-top:0.6em;
-      margin-bottom:0.6em;
-      border-radius: 5px;
-      border:none;
-      outline:none;
-      font-weight: bold;
-      transition:0.4s;
-  
-}
-
-.Search-client{
-  position: relative;
-  float: left;
-  margin-left: 10px;
-  margin-bottom: 7px;
-  margin-top: 5px;
-  color: #222;
-}
-
-
-.Search-client input{
-      position: relative;
-      background-color: #ebebeb;
-      font-size:1em;
-      padding:1em 1.2em 1em 1.2em;
-      margin-top:0.6em;
-      margin-bottom:0.6em;
-      border-radius: 5px;
-      border:none;
-      outline:none;
-      font-weight: bold;
-      transition:0.4s;
-  
-}
 
 /* BUTTON */
 
